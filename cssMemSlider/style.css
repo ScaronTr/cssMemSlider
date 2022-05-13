@@ -21,8 +21,8 @@
    
    margin: 0 auto;
    padding: 1%;
-   width: 60%;
-   height: 75vh;
+   width: 55%;
+   height: 85vh;
    border-radius: 2rem;
 
    background: linear-gradient(to bottom, #E6EBF5 0%, #D7DDE8 100%);
@@ -53,7 +53,6 @@ img {
 
 .slider__description {
    display: flex;
-   justify-content: space-between;
 
    gap: 1rem;
    padding: 0 5%;
@@ -72,7 +71,8 @@ img {
    width: 100%;
 
    font-size: 1.5rem;
-   font-family: Verdana;
+   font-family: Arial, Verdana, sans-serif;
+   letter-spacing: 0.04rem;
 
    transition: .5s ease-in-out;
 }
@@ -124,18 +124,9 @@ label:active .dot {
 
 /* activate dot */
 
-#slide_1:checked ~ .slider__description label[for="slide_1"] .dot {
-   background-color: var(--dot-color);
-}
-
-#slide_2:checked ~ .slider__description label[for="slide_2"] .dot{
-   background-color: var(--dot-color);
-}
-
-#slide_3:checked ~ .slider__description label[for="slide_3"] .dot{
-   background-color: var(--dot-color);
-}
-
+#slide_1:checked ~ .slider__description label[for="slide_1"] .dot,
+#slide_2:checked ~ .slider__description label[for="slide_2"] .dot,
+#slide_3:checked ~ .slider__description label[for="slide_3"] .dot,
 #slide_4:checked ~ .slider__description label[for="slide_4"] .dot {
    background-color: var(--dot-color);
 }
@@ -166,4 +157,82 @@ label:active .dot {
 
 #slide_4:checked ~ .slider__description .wrapper .slider__description-container span {
    margin-left: -75%;
+}
+
+@media (max-width: 1440px) and (min-width: 1366px) {
+   .slider {
+      width: 55%;
+   }
+
+   .slider__slide-description {
+      font-size: 1.2rem;
+   }
+}
+
+@media (max-width: 1365px) {
+   .slider {
+      height: 88vh;
+      width: 60%;
+   }
+
+   .slider__slide-description {
+      font-size: 1.2rem;
+   }
+}
+
+@media (max-width: 1024px) {
+   .slider {
+      height: 85vh;
+      width: 65%;
+   }
+
+   .slider__slide-description {
+      font-size: 1rem;
+   }
+
+   label {
+      width: 1.6rem;
+      height: 1.6rem;
+   }
+
+   .dot {
+      width: 0.6rem;
+      height: 0.6rem;
+   }
+
+   label:hover .dot {
+      outline: solid 0.4rem #000000;
+      outline-offset: -0.1rem;
+   }
+
+   label:active .dot {
+      outline-color: var(--dot-color);
+   }
+}
+
+@media (max-width: 900px) {
+   .slider {
+      width: 90%;
+      height: 50vh;
+   }
+
+   .slider__description {
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 50%;
+   }
+
+   .slider__description .wrapper {
+      height: 50%;
+   }
+
+   .slider__controls {
+      order: -1;
+   }
+   
+   .slider__slide-description {
+      height: 50%;
+      font-size: 0.8rem;
+   }
 }
