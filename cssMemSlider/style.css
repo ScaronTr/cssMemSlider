@@ -1,0 +1,238 @@
+@import "./css/normalize.css";
+
+:root {
+   --dot-color: #3a7bd5;
+}
+
+* {
+   scroll-behavior: smooth;
+   box-sizing: border-box;
+} 
+
+.body {
+   padding-top: 5vh;
+
+   background: linear-gradient(to bottom, #00D2FF 0%,#3A7BD5 100%);
+}
+
+.slider {
+   display: flex;
+   flex-direction: column;
+   
+   margin: 0 auto;
+   padding: 1%;
+   width: 55%;
+   height: 85vh;
+   border-radius: 2rem;
+
+   background: linear-gradient(to bottom, #E6EBF5 0%, #D7DDE8 100%);
+   box-shadow: 0 0.5rem 1rem 0.1rem rgba(0, 0, 0, 0.6);
+   overflow: hidden;
+}
+
+img {
+   width: 22.5%;
+   height: 90%;
+   transition: .5s ease-in-out;
+   border-radius: 1rem;
+}
+
+.wrapper {
+   overflow: hidden;
+   height: 100%;
+   width: 100%;
+}
+
+.slider__slides-container {
+   display: flex;
+   align-items: center;
+   justify-content: space-around;
+   width: 400%;
+   height: 100%;
+}
+
+.slider__description {
+   display: flex;
+
+   gap: 1rem;
+   padding: 0 5%;
+   width: 100%;
+   height: 8%;
+}
+
+.slider__description-container {
+   display: flex;
+   align-items: center;
+   width: 400%;
+   height: 100%;
+}
+
+.slider__slide-description {
+   width: 100%;
+
+   font-size: 1.5rem;
+   font-family: Arial, Verdana, sans-serif;
+   letter-spacing: 0.04rem;
+
+   transition: .5s ease-in-out;
+}
+
+input[name="control"] {
+   display: none;
+   background-color: aqua;
+}
+
+.slider__controls {
+   display: flex;
+   align-items: center;
+
+   gap: 1.5rem;
+}
+
+label {
+   display: flex;
+   align-items: center;
+   justify-content: center;
+
+   width: 2rem;
+   height: 2rem;
+
+   cursor: pointer;
+}
+
+label:hover .dot {
+   outline: solid 0.5rem #000000;
+   outline-offset: -0.2rem;
+}
+
+label:active .dot {
+   outline-color: var(--dot-color);
+   transition: .1s;
+}
+
+.dot {
+   width: 0.8rem;
+   height: 0.8rem;
+
+   outline: solid 0.06rem #000000;
+   outline-offset: 0.3rem;
+
+   border-radius: 50%;
+   
+   transition: .4s;
+}
+
+/* activate dot */
+
+#slide_1:checked ~ .slider__description label[for="slide_1"] .dot,
+#slide_2:checked ~ .slider__description label[for="slide_2"] .dot,
+#slide_3:checked ~ .slider__description label[for="slide_3"] .dot,
+#slide_4:checked ~ .slider__description label[for="slide_4"] .dot {
+   background-color: var(--dot-color);
+}
+
+/* slide img */
+
+#slide_2:checked ~ .wrapper .slider__slides-container img {
+   margin-left: -50%;
+}
+
+#slide_3:checked ~ .wrapper .slider__slides-container img {
+   margin-left: -100%;
+}
+
+#slide_4:checked ~ .wrapper .slider__slides-container img {
+   margin-left: -150%;
+}
+
+/* slide text */
+
+#slide_2:checked ~ .slider__description .wrapper .slider__description-container span {
+   margin-left: -25%;
+}
+
+#slide_3:checked ~ .slider__description .wrapper .slider__description-container span {
+   margin-left: -50%;
+}
+
+#slide_4:checked ~ .slider__description .wrapper .slider__description-container span {
+   margin-left: -75%;
+}
+
+@media (max-width: 1440px) and (min-width: 1366px) {
+   .slider {
+      width: 55%;
+   }
+
+   .slider__slide-description {
+      font-size: 1.2rem;
+   }
+}
+
+@media (max-width: 1365px) {
+   .slider {
+      height: 88vh;
+      width: 60%;
+   }
+
+   .slider__slide-description {
+      font-size: 1.2rem;
+   }
+}
+
+@media (max-width: 1024px) {
+   .slider {
+      height: 85vh;
+      width: 65%;
+   }
+
+   .slider__slide-description {
+      font-size: 1rem;
+   }
+
+   label {
+      width: 1.6rem;
+      height: 1.6rem;
+   }
+
+   .dot {
+      width: 0.6rem;
+      height: 0.6rem;
+   }
+
+   label:hover .dot {
+      outline: solid 0.4rem #000000;
+      outline-offset: -0.1rem;
+   }
+
+   label:active .dot {
+      outline-color: var(--dot-color);
+   }
+}
+
+@media (max-width: 900px) {
+   .slider {
+      width: 90%;
+      height: 50vh;
+   }
+
+   .slider__description {
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 50%;
+   }
+
+   .slider__description .wrapper {
+      height: 50%;
+   }
+
+   .slider__controls {
+      order: -1;
+   }
+   
+   .slider__slide-description {
+      height: 50%;
+      font-size: 0.8rem;
+   }
+}
